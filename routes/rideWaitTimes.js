@@ -35,6 +35,6 @@ router.post('/fav-rides/add', rideCtrl.addFavRide);
  * @group FavRides
  * @return message 204
  */
-router.delete('/fav-rides/delete/:id')
+router.delete('/fav-rides/delete/:id', rideCtrl.deleteFavRide);
 
 module.exports = router;
