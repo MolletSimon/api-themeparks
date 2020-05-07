@@ -39,5 +39,11 @@ exports.addFavRide = (req, res, next) => {
     favRide = new FavRides({...req.body});
     favRide.save()
         .then(() => res.status(201).json({message: 'Favori ajouté'}))
-        .catch(err => res.status(500).json(err));
+        .catch(error => res.status(500).json({error}));
 };
+
+exports.deleteFavRide = (req, res, next) => {
+    FavRides.deleteOne({ _id : req.params.id})
+        .then(() => res.status(204).json({message: 'Favori supprimé'}))
+        .catch(error => res.status(500).json({error}));
+}
