@@ -16,4 +16,18 @@ router.get('/wait-times/disney-park-paris', rideCtrl.getWaitTimesDisneylandParks
  */
 router.get('/wait-times/disney-studio-paris', rideCtrl.getWaitTimesDisneylandStudio);
 
+/**
+ * @route GET /fav-rides/:user
+ * @group FavRides
+ * @return favride object (ride object + userid)
+ */
+router.get('/fav-rides/:user', rideCtrl.getFavRides);
+
+/**
+ * @route POST /fav-rides/add
+ * @group FavRides
+ * @return message 200 
+ */
+router.post('/fav-rides/add', rideCtrl.addFavRide);
+
 module.exports = router;
