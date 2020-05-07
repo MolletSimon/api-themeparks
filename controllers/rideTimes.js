@@ -31,7 +31,7 @@ exports.getWaitTimesDisneylandStudio = (req, res, next) => {
 
 exports.getFavRides = (req, res, next) => {
     FavRides.find({ user: req.params.user })
-        .then(favRides => res.status(200).json(favRides))
+        .then(favRides => res.status(200).json({favRides}))
         .catch(err => res.status(500).json(err))
 };
 
