@@ -8,9 +8,13 @@ const DisneyStudios = new Themeparks.Parks.DisneylandParisWaltDisneyStudios();
 exports.getWaitTimesDisneylandParks = (req, res, next) => {
     DisneylandParis.GetWaitTimes()
         .then(waitTimes => {
-            res.status(200).json({waitTimes});
+            res.status(200).json({
+                waitTimes
+            });
             waitTimes.forEach(waitTime => {
-                const rideWaitTime = new RideWaitTimes({...waitTime});
+                const rideWaitTime = new RideWaitTimes({
+                    ...waitTime
+                });
                 rideWaitTime.save().then(() => console.log('Sauvegarde effectué')).catch(err => console.error(err));
             })
         })
@@ -20,9 +24,13 @@ exports.getWaitTimesDisneylandParks = (req, res, next) => {
 exports.getWaitTimesDisneylandStudio = (req, res, next) => {
     DisneyStudios.GetWaitTimes()
         .then(waitTimes => {
-            res.status(200).json({waitTimes});
+            res.status(200).json({
+                waitTimes
+            });
             waitTimes.forEach(waitTime => {
-                const rideWaitTime = new RideWaitTimes({...waitTime});
+                const rideWaitTime = new RideWaitTimes({
+                    ...waitTime
+                });
                 rideWaitTime.save().then(() => console.log('Sauvegarde effectué')).catch(err => console.error(err));
             })
         })
@@ -30,20 +38,36 @@ exports.getWaitTimesDisneylandStudio = (req, res, next) => {
 };
 
 exports.getFavRides = (req, res, next) => {
-    FavRides.find({ user: req.params.user })
-        .then(favRides => res.status(200).json({favRides}))
+    FavRides.find({
+            user: req.params.user
+        })
+        .then(favRides => res.status(200).json({
+            favRides
+        }))
         .catch(err => res.status(500).json(err))
 };
 
 exports.addFavRide = (req, res, next) => {
-    favRide = new FavRides({...req.body});
+    favRide = new FavRides({
+        ...req.body
+    });
     favRide.save()
-        .then(() => res.status(201).json({message: 'Favori ajouté'}))
-        .catch(error => res.status(500).json({error}));
+        .then(() => res.status(201).json({
+            message: 'Favori ajouté'
+        }))
+        .catch(error => res.status(500).json({
+            error
+        }));
 };
 
 exports.deleteFavRide = (req, res, next) => {
-    FavRides.deleteOne({ _id : req.params.id})
-        .then(() => res.status(204).json({message: 'Favori supprimé'}))
-        .catch(error => res.status(500).json({error}));
+    FavRides.deleteOne({
+            _id: req.params.id
+        })
+        .then(() => res.status(204).json({
+            message: 'Favori supprimé'
+        }))
+        .catch(error => res.status(500).json({
+            error
+        }));
 }
